@@ -2,15 +2,16 @@
 title: "Lotka-Volterra Example"
 subtitle: "Numerical approximations"
 description: "Day 3, morning interactive session"
-date: 2024-08-07
+date: 2025-08-06
 format: html
 toc: true
 editor_options: 
   chunk_output_type: console
 ---
 
-::: {.callout-note}
-## **Credit:** 
+::: callout-note
+## **Credit:**
+
 This code is closely based on the article [Numerically solving differential equations with R](https://rstudio-pubs-static.s3.amazonaws.com/32888_197d1a1896534397b67fb04e0d4899ae.html).
 :::
 
@@ -33,36 +34,36 @@ As described in lecture, the Lotka-Volterra models have been used to describe pr
 
 $$\frac{dV}{dt}=r V-\alpha VP$$
 
-From Wikipedia (*but parameters changed to match Nicholas Gotelli's, [A Primer of Ecology](https://global.oup.com/academic/product/a-primer-of-ecology-9780878933181?cc=ca&lang=en&)*): 
+From Wikipedia (*but parameters changed to match Nicholas Gotelli's, [A Primer of Ecology](https://global.oup.com/academic/product/a-primer-of-ecology-9780878933181?cc=ca&lang=en&)*):
 
->"The prey are assumed to have an unlimited food supply and to reproduce exponentially, unless subject to predation; this exponential growth is represented in the equation above by the term $rV$. The rate of predation upon the prey is assumed to be proportional to the rate at which the predators and the prey meet, this is represented above by $\alpha VP$. If either $V$ or $P$ is zero, then there can be no predation."
+> "The prey are assumed to have an unlimited food supply and to reproduce exponentially, unless subject to predation; this exponential growth is represented in the equation above by the term $rV$. The rate of predation upon the prey is assumed to be proportional to the rate at which the predators and the prey meet, this is represented above by $\alpha VP$. If either $V$ or $P$ is zero, then there can be no predation."
 
 ### iii. Predator equation:
 
 $$\frac{dP}{dt}=\beta VP - qP$$
 
-From Wikipedia (*but parameters changed to match Nicholas Gotelli's, [A Primer of Ecology](https://global.oup.com/academic/product/a-primer-of-ecology-9780878933181?cc=ca&lang=en&)*): 
+From Wikipedia (*but parameters changed to match Nicholas Gotelli's, [A Primer of Ecology](https://global.oup.com/academic/product/a-primer-of-ecology-9780878933181?cc=ca&lang=en&)*):
 
->"In this equation, $\beta VP$ represents the growth of the predator population. (Note the similarity to the predation rate; however, a different constant is used, as the rate at which the predator population grows is not necessarily equal to the rate at which it consumes the prey). The term $qP$ represents the loss rate of the predators due to either natural death or emigration, it leads to an exponential decay in the absence of prey."
+> "In this equation, $\beta VP$ represents the growth of the predator population. (Note the similarity to the predation rate; however, a different constant is used, as the rate at which the predator population grows is not necessarily equal to the rate at which it consumes the prey). The term $qP$ represents the loss rate of the predators due to either natural death or emigration, it leads to an exponential decay in the absence of prey."
 
 **Where:**
 
 -   $V$ is prey (**V**ictim) population (e.g. rabbits)
 -   $P$ is **P**redator population (e.g. wolves)
 -   $r, \alpha, \beta, q$ are positive parameters
-    - $r$: intrinsic rate of increase of the prey population
-    - $\alpha$: capture efficiency i.e. the effect of a predator on the per capita growth rate of the prey population
-    - $\beta$: measure of conversion efficiency i.e. the abiliity of predators to convert each new prey into additional per capita growth rate for the predator population
-    - $q$: per capita death rate of the predator population
+    -   $r$: intrinsic rate of increase of the prey population
+    -   $\alpha$: capture efficiency i.e. the effect of a predator on the per capita growth rate of the prey population
+    -   $\beta$: measure of conversion efficiency i.e. the abiliity of predators to convert each new prey into additional per capita growth rate for the predator population
+    -   $q$: per capita death rate of the predator population
 
 ### iii. Solving in R:
 
-To find an approximate solution in R, we will need four things: 
+To find an approximate solution in R, we will need four things:
 
-- Parameter values 
-- A sequence of times over which we'll approximate predator & prey populations 
-- An initial condition (initial populations of predator & prey at $t = 0$) 
-- The differential equations that need to be solved
+-   Parameter values
+-   A sequence of times over which we'll approximate predator & prey populations
+-   An initial condition (initial populations of predator & prey at $t = 0$)
+-   The differential equations that need to be solved
 
 #### Solving the Lotka-Volterra equation:
 
@@ -103,6 +104,6 @@ ggplot(data = approx_lk_df, aes(x = time, y = population)) +
 
 ### iv. Try updating initial conditions and / or parameters
 
-What happens as you change the initial conditions and / or parameters (and re-run the entire code chunk)? How does that align with what you see in the graph? 
+What happens as you change the initial conditions and / or parameters (and re-run the entire code chunk)? How does that align with what you see in the graph?
 
 It can be helpful to change just **one** value at a time and observe it's effects -- do the changes in predator / prey dynamics make sense, based on your changes?
