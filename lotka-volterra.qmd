@@ -78,6 +78,7 @@ parameters <- c(r = .75, alpha = 0.8, beta = 0.5, q = 1)
 # Recall: V = prey, P = predator
 init_cond <- c(V = 10, P = 4)
 
+
 # Prepare the series of differential equations as a function ----
 lv_equations <- function(time, init_cond, parameters) {
   with(as.list(c(init_cond, parameters)), {
